@@ -14,6 +14,7 @@ todos = db.todo
 # client = MongoClient(mongodb_host, mongodb_port)    #Configure the connection to the database
 # db = client.assignment3    #Select the database
 
+# To run: python app.py
 
 app = Flask(__name__)
 title = "TODO with Flask"
@@ -126,8 +127,7 @@ def about():
 
 if __name__ == "__main__":
 	env = os.environ.get('FLASK_ENV', 'development')
-	port = int(os.environ.get('PORT', 5000))
+	port = int(os.environ.get('PORT', 1234))
 	debug = False if env == 'production' else True
-	app.run(debug=True)
-	app.run(port=port, debug=debug)
-	# Careful with the debug mode..
+
+	app.run(host='0.0.0.0', port=port, debug=debug)
