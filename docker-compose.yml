@@ -5,7 +5,7 @@ services:
     image: nolanwyl/flask_app:latest
     container_name: kubeflow-flask_app-1
     ports:
-      - "4321:5000"
+      - "5000:5000"
     environment:
       - PORT=5000
       - MONGO_HOST=mongo
