@@ -17,6 +17,12 @@ spec:
           image: nolanwyl/flask_app:latest
           ports:
             - containerPort: 5000
+          env:
+            - name: MONGO_HOST
+              value: mongo
+            - name: MONGO_PORT
+              value: '27017'
+
 
 ---
 apiVersion: apps/v1
