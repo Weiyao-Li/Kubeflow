@@ -119,6 +119,16 @@ def search():
 def about():
 	return render_template('credits.html',t=title,h=heading)
 
+@app.route('/health')
+def health_check():
+    return "OK", 200
+
+# here is for the intentional testing error:
+# @app.route('/health')
+# def health_check():
+#     return "Not healthy", 500
+
+
 if __name__ == "__main__":
     env = os.environ.get('FLASK_ENV', 'development')
     port = int(os.environ.get('PORT', 5000))
