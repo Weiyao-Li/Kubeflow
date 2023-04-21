@@ -4,17 +4,11 @@ from bson.objectid import ObjectId # For ObjectId to work
 from bson.errors import InvalidId # For catching InvalidId exception for ObjectId
 import os
 
-CONNECTION_STRING = os.environ.get('MONGO_CONNECTION_STRING', "mongodb+srv://nolanwyl:Abc32569844.@cluster0.t6emxeg.mongodb.net/?retryWrites=true&w=majority")
-client = MongoClient(CONNECTION_STRING)
-db = client.assignment3
-todos = db.todo
-
-# mongodb_host = os.environ.get('MONGO_HOST', '128.59.178.254')
-# mongodb_port = int(os.environ.get('MONGO_PORT', '27017'))
-# client = MongoClient(mongodb_host, mongodb_port)    #Configure the connection to the database
-# db = client.assignment3    #Select the database
-
-# To run: python app.py
+mongodb_host = os.environ.get('MONGO_HOST', 'mongo')
+mongodb_port = int(os.environ.get('MONGO_PORT', '27017'))
+client = MongoClient(mongodb_host, mongodb_port)  # Configure the connection to the database
+db = client.assignment3  # Select the database
+todos = db.todo  # Select the collection
 
 app = Flask(__name__)
 title = "TODO with Flask"
@@ -126,8 +120,8 @@ def about():
 	return render_template('credits.html',t=title,h=heading)
 
 if __name__ == "__main__":
-	env = os.environ.get('FLASK_ENV', 'development')
-	port = int(os.environ.get('PORT', 1234))
-	debug = False if env == 'production' else True
+    env = os.environ.get('FLASK_ENV', 'development')
+    port = int(os.environ.get('PORT', 5000))
+    debug = False if env == 'production' else True
 
-	app.run(host='0.0.0.0', port=port, debug=debug)
+    app.run(host='0.0.0.0', port=port, debug=debug)
