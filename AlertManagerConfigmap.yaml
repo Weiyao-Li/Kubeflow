@@ -31,5 +31,5 @@ data:
         require_tls: false
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
+      - api_url: please input your url here
         channel: '#general'
